@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php 
-        
+
     ?>
 
     <h2>Comparison Operators</h2>

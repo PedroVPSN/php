@@ -40,4 +40,22 @@ function updateTable() {
     }
 }
 
+function deleteRow() {
+    global $database;
+    
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $id = $_POST["id"];
+
+    $query = "DELETE FROM users ";
+    
+    $query .= "WHERE id = $id ";
+
+    $result = mysqli_query($database, $query);
+
+    if(!$result) {
+        die("QUERY FAIL" . mysqli_error($database));
+    }
+}
+
 ?>

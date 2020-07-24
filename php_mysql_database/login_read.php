@@ -1,12 +1,6 @@
 <?php 
-    $database = mysqli_connect("localhost", "root", "", "login_app");
-
-    if($database) {
-        echo "connected";
-    }
-    else {
-        die("Connection failed");
-    }
+    include "db.php";
+    include "database_functions.php";
 ?>
 
 
@@ -21,17 +15,10 @@
 <body>
     <div class="card text-white bg-light mb-3" style="max-width: 18rem;">
         <div class="card-body">
-            <?php
-            while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                <pre>
-                <?php
-                print_r($row);
-                ?>
-                </pre>
-                <?php
-            }   
-            ?>
+            <pre>
+            <?php readRows(); ?>
+            </pre>
+            </div>  
         </div>
     </div>
 </body>

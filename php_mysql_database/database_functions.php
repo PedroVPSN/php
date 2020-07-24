@@ -4,6 +4,26 @@
 
 <?php 
 
+function createRow() {
+
+    if (isset($_POST["submit"])) {
+        global $database;
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+
+        $query = "INSERT INTO users(username, password)";
+        $query .= "VALUES ('$username', '$password')";
+        $result = mysqli_query($database, $query);
+
+        if(!$result) {
+            die("Query FAILED" . mysqli_error());
+        }
+        else {
+            echo "User Created";
+        }
+    }
+}
+
 function fetchData() {
     global $database;
 
@@ -56,6 +76,20 @@ function deleteRow() {
     if(!$result) {
         die("QUERY FAIL" . mysqli_error($database));
     }
+}
+
+function readRows() {
+    global $database;
+    $query = "SELECT * FROM users";
+    $result = mysqli_query($database, $query);
+    if(!$result) {
+        die('Query FAILED' . mysqli_error());
+    }
+        
+    while($row = mysqli_fetch_assoc($result)) {
+        
+        print_r($row);
+    }  
 }
 
 ?>

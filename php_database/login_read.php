@@ -7,14 +7,6 @@
     else {
         die("Connection failed");
     }
-
-    $query = "SELECT * FROM users";
-
-    $result = mysqli_query($database, $query);
-
-    if(!$result) {
-        die("Query FAILED" . mysqli_error());
-    }
 ?>
 
 

@@ -11,6 +11,9 @@ function createRow() {
         $username = $_POST["username"];
         $password = $_POST["password"];
 
+        $username = mysqli_real_escape_string($database, $username);
+        $password = mysqli_real_escape_string($database, $password);
+
         $query = "INSERT INTO users(username, password)";
         $query .= "VALUES ('$username', '$password')";
         $result = mysqli_query($database, $query);

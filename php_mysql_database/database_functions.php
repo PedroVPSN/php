@@ -14,6 +14,12 @@ function createRow() {
         $username = mysqli_real_escape_string($database, $username);
         $password = mysqli_real_escape_string($database, $password);
 
+        $hashFormat = "$2y$10$";
+        $salt = "howtoencrypttheuserspassword";
+        $hashSalt = $hashFormat . $salt;
+        $password = crypt($password, $hashSalt);
+        
+
         $query = "INSERT INTO users(username, password)";
         $query .= "VALUES ('$username', '$password')";
         $result = mysqli_query($database, $query);
